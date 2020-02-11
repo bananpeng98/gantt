@@ -1,6 +1,6 @@
 {
   "style": {
-    "showNow": true,
+    "showNow": false,
     "weekBarColor": "#EEEFF1",
     "weekBarTextColor": "#666",
     "taskTextColor": "#000303",
@@ -19,20 +19,21 @@
     {"name":"Determine model","type":"task","category":"goals","start":"2020-01-30","end":"2020-03-14"},
     {"name":"Project Plan","type":"task","category":"deadlines","start":"2020-02-03","end":"2020-02-12"},
 
-    {"name":"Execution","type":"category","start":"2020-02-12","end":"2020-05-14"},
-    {"name":"Gather datasets","type":"task","category":"goals","start":"2020-02-12","end":"2020-02-20"},
-    {"name":"Oral halftime presentation","type":"task","category":"deadlines","start":"2020-02-12","end":"2020-03-03"},
-    {"name":"Dataset preprocessing","type":"task","category":"goals","start":"2020-03-03","end":"2020-03-14"},
+    {"name":"Execution","type":"category","start":"2020-02-12","end":"2020-04-29"},
+    {"name":"Write Report","type":"task","category":"goals","start":"2020-02-12","end":"2020-04-29"},
+    {"name":"Gather datasets","type":"task","category":"goals","start":"2020-02-12","end":"2020-02-28"},
+    {"name":"Oral halftime presentation","type":"task","category":"deadlines","start":"2020-02-18","end":"2020-03-03"},
     {"name":"Individual evaluation 1","type":"task","category":"deadlines","start":"2020-03-03","end":"2020-03-06"},
-    {"name":"Final report pre-review","type":"task","category":"deadlines","start":"2020-03-06","end":"2020-04-29"},
-    {"name":"Training","type":"task","category":"goals","start":"2020-03-14","end":"2020-04-24"},
-    {"name":"Compiled final report","type":"task","category":"deadlines","start":"2020-04-29","end":"2020-05-14"},
+    {"name":"Model training","type":"task","category":"goals","start":"2020-03-14","end":"2020-04-14"},
 
-    {"name":"Closure","type":"category","start":"2020-04-10","end":"2020-06-05"},
-    {"name":"Evaluation","type":"task","category":"goals","start":"2020-04-10","end":"2020-05-10"},
+    {"name":"Closure","type":"category","start":"2020-04-01","end":"2020-06-05"},
+    {"name":"Final model evaluation","type":"task","category":"goals","start":"2020-04-01","end":"2020-04-14"},
+    {"name":"Final report pre-review","type":"task","category":"deadlines","start":"2020-04-01","end":"2020-04-29"},
+    {"name":"Report pre-review mending","type":"task","category":"goals","start":"2020-04-29","end":"2020-05-12"},
+    {"name":"Compiled final report","type":"task","category":"deadlines","start":"2020-04-29","end":"2020-05-14"},
     {"name":"Final presentation","type":"task","category":"deadlines","start":"2020-05-08","end":"2020-05-26"},
     {"name":"Exhibition","type":"task","category":"deadlines","start":"2020-05-12","end":"2020-05-19"},
-    {"name":"Individual opposition","type":"task","category":"deadlines","start":"2020-05-14","end":"2020-05-20"},
+    {"name":"Individual opposition","type":"task","category":"deadlines","start":"2020-05-12","end":"2020-05-20"},
     {"name":"Individual evaluation 2","type":"task","category":"deadlines","start":"2020-05-26","end":"2020-05-29"},
     {"name":"Final hand-in of report","type":"task","category":"deadlines","start":"2020-05-26","end":"2020-06-05"}
   ]
