@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Gantt from './Gantt';
 import * as serviceWorker from './serviceWorker';
 
 fetch('/gantt.json')
   .then(res => res.json())
   .then(tasks => {
-    ReactDOM.render(App(tasks), document.getElementById('root'));
+    ReactDOM.render(Gantt(tasks, {
+      showNow: true,
+      weekBarColor: "#EEEFF1",
+      weekBarTextColor: "#666",
+      taskTextColor: "#000303",
+      categories: {
+        deadlines: "#61CFED",
+        goals: "#5CCE99",
+        other: "#7D9CF9",
+      }
+    }), document.getElementById('root'));
   });
 
 // If you want your app to work offline and load faster, you can change

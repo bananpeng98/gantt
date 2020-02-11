@@ -1,18 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 
-function App(tasks) {
+function Gantt(tasks, style) {
   if (tasks.length === 0) { return <></>; }
-
-  const categorieColor = {
-    deadlines: "#61CFED",
-    goals: "#5CCE99",
-    other: "#7D9CF9",
-  };
-
-  const titleBg = "#EEEFF1";
-  const weekColor = "#666";
-  const taskTextColor = "#000303";
+  style = style ? style : {};
 
   const df = date => {
     const d = date.slice(0, date.indexOf('/'));
@@ -58,6 +48,8 @@ function App(tasks) {
   const sideBarWidth = 198*2;
   const graphWidth = width-sideBarWidth/2-padX*2;
   const weeks = Math.ceil(fullDuration / (1000*60*60*24*7));
+  const now = Date.now();
+  const relNow = (now - first.start.getTime()) / fullDuration;
 
   console.log(weeks);
 
@@ -73,14 +65,14 @@ function App(tasks) {
   return (
       <svg viewBox={"0 0 " + width + " " + height} fontFamily="Arial">
         <g id="timeline" transform="translate(20, 20)">
-          <path d="M17,0 h962 a17,17 0 0 1 17,17 v1 a17,17 0 0 1 -17,17 h-962 a17,17 0 0 1 -17,-17 v-1 a17,17 0 0 1 17,-17 z" fill={titleBg} transform="translate(198)"></path>
+          <path d="M17,0 h962 a17,17 0 0 1 17,17 v1 a17,17 0 0 1 -17,17 h-962 a17,17 0 0 1 -17,-17 v-1 a17,17 0 0 1 17,-17 z" fill={style.weekBarColor} transform="translate(198)"></path>
           {[...Array(weeks).keys()].map(week =>
                                         <g key={week} transform="translate(198)">
-                                          <text fontWeight="600" fontSize="19" fill={weekColor} textAnchor="middle" width="49.8" y="18" x={24.9+week*49.5} dy=".35em">W{week+1}</text>
+                                          <text fontWeight="600" fontSize="19" fill={style.weekBarTextColor} textAnchor="middle" width="49.8" y="18" x={24.9+week*49.5} dy=".35em">W{week+1}</text>
                                         </g>
                                                               )}
           {[...Array(weeks-1).keys()].map(week =>
-                                          <rect key={week} transform="translate(198)" fill={weekColor} rx="2" width="2" height="19" x={48.8+week*49.5} y="8"></rect>
+                                          <rect key={week} transform="translate(198)" fill={style.weekBarTextColor} rx="2" width="2" height="19" x={48.8+week*49.5} y="8"></rect>
                                        )}
         </g>
         <g id="tasks" transform={"translate(" + padX + ", " + padY + ")"}>
@@ -88,7 +80,7 @@ function App(tasks) {
                                           <rect key={week} transform="translate(198)" fill={"#F8F9FB"} rx="2" width="2" height={graphHeight-taskBarHeight} x={48.8+week*49.5} y={topBarHeight}></rect>
                                          )}
           {tasks.map((task, i) => <g key={i}>
-                                    <text fontSize="16" name="Label" fill={taskTextColor} dy=".38em" textAnchor="start" fontWeight={task.type === 'task' ? 400 : 600} x={task.type === 'task' ? 10 : 0} y={48+i*48} style={{whiteSpace: "pre"}}>{task.name}</text>
+                                    <text fontSize="16" name="Label" fill={style.taskTextColor} dy=".38em" textAnchor="start" fontWeight={task.type === 'task' ? 400 : 600} x={task.type === 'task' ? 10 : 0} y={48+i*48} style={{whiteSpace: "pre"}}>{task.name}</text>
 
                                <g>
                                  <linearGradient x1="0%" y1="0%" x2="100%" y2="0%">
@@ -99,7 +91,7 @@ function App(tasks) {
                                    {task.type === 'task'
                                     ? <path
                                     strokeWidth="0"
-                                    fill={categorieColor[task.category]}
+                                    fill={style.categories[task.category]}
                                         d={"m 0 4 a 4 4 0 0 1 4 -4 h " + (task.durationRel*graphWidth-8) + " a 4 4 0 0 1 4 4 v 10 a 4 4 0 0 1 -4 4 h -" + (task.durationRel*graphWidth-8) + " a 4 4 0 0 1 -4 -4 v -10"}
                                     ></path>
                                     : <path
@@ -111,12 +103,13 @@ function App(tasks) {
                                  </g>
                                </g>
                              </g>)}
+          {style.showNow ? <rect fill="#ff8844" transform={"translate(" + (sideBarWidth/2 + relNow*(graphWidth-padX)-1) + ", " + (topBarHeight) + ")"} width="2" height={graphHeight}></rect> : <></>}
         </g>
-        <g id="legend" transform={"translate(" + (width-Object.keys(categorieColor).length*120) + ", " + (graphHeight+40) + ")"}>
-          {Object.keys(categorieColor).map((cat, i) =>
+        <g id="legend" transform={"translate(" + (width-Object.keys(style.categories).length*120) + ", " + (graphHeight+40) + ")"}>
+          {Object.keys(style.categories).map((cat, i) =>
                                            <g key={i} transform={"translate(" + i*120 + ")"}>
-                                             <text fontSize="16" name="Label" fill={taskTextColor} dy=".38em" textAnchor="start" fontWeight={600} x={34} y={8} style={{whiteSpace: "pre"}}>{cat}</text>
-                                             <path fill={categorieColor[cat]} d={"m 0 4 a 4 4 0 0 1 4 -4 h 20 a 4 4 0 0 1 4 4 v 10 a 4 4 0 0 1 -4 4 h -20 a 4 4 0 0 1 -4 -4 v -10"}></path>
+                                             <text fontSize="16" name="Label" fill={style.taskTextColor} dy=".38em" textAnchor="start" fontWeight={600} x={34} y={8} style={{whiteSpace: "pre"}}>{cat}</text>
+                                             <path fill={style.categories[cat]} d={"m 0 4 a 4 4 0 0 1 4 -4 h 20 a 4 4 0 0 1 4 4 v 10 a 4 4 0 0 1 -4 4 h -20 a 4 4 0 0 1 -4 -4 v -10"}></path>
                                            </g>
                                           )}
         </g>
@@ -124,4 +117,4 @@ function App(tasks) {
   );
 }
 
-export default App;
+export default Gantt;
