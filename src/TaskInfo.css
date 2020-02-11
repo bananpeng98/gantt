@@ -15,6 +15,10 @@
     padding: 8px;
 }
 
+.TaskInfo-body > div {
+    margin-bottom: 10px;
+}
+
 .Progress {
     border-radius: 5px;
     overflow: hidden;
@@ -45,5 +49,26 @@
     z-index: 0;
     height: 100%;
     background-color: #00f;
+}
+
+.StartEnd {
+    display: flex;
+}
+
+.StartEnd-start {
+    text-align: left;
+    width: 45%;
+    font-weight: bold;
+}
+
+.StartEnd-end {
+    font-weight: bold;
+    text-align: right;
+    width: 45%;
+}
+
+.StartEnd-arrow {
+    text-align: center;
+    width: 10%;
 }
 
