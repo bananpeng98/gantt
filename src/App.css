@@ -1,0 +1,13 @@
+.App {
+    width: 100%;
+    display: flex;
+}
+
+.Gantt {
+    width: 75%;
+}
+
+.Info {
+    width: 25%;
+}
+

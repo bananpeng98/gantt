@@ -1,0 +1,49 @@
+
+.TaskInfo {
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #efefef;
+    color: #333;
+}
+
+.TaskInfo-header {
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.TaskInfo-body {
+    padding: 8px;
+}
+
+.Progress {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.Progress-container {
+    position: relative;
+    height: 24px;
+    width: 100%;
+    background-color: #cecece;
+    text-align: center;
+}
+
+.Progress-label {
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.Progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    height: 100%;
+    background-color: #00f;
+}
+

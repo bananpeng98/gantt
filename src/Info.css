@@ -1,0 +1,11 @@
+
+
+.TaskContainer {
+    display: flex;
+}
+
+.TaskContainer > div {
+    width: 50%;
+    margin: 10px;
+}
+

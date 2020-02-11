@@ -1,26 +1,8 @@
 import React from 'react';
 
-function Gantt(tasks, style) {
+function Gantt({ tasks, style }) {
   if (tasks.length === 0) { return <></>; }
   style = style ? style : {};
-
-  const df = date => {
-    const d = date.slice(0, date.indexOf('/'));
-    const m = date.slice(date.indexOf('/')+1, date.indexOf('/', date.indexOf('/')+1));
-    const y = date.slice(date.indexOf('/', date.indexOf('/')+1)+1);
-    return `20${y}-${m}-${d}`;
-  };
-
-  tasks = tasks
-    .map(task => ({
-      ...task,
-      start: new Date(df(task.start)),
-      end: new Date(df(task.end)),
-    }))
-    .map(task => ({
-      ...task,
-      duration: task.end.getTime() - task.start.getTime()
-    }));
 
   let first = null;
   let firstTime = Infinity;
@@ -63,7 +45,7 @@ function Gantt(tasks, style) {
   console.log(tasks);
 
   return (
-      <svg viewBox={"0 0 " + width + " " + height} fontFamily="Arial">
+      <svg id="gantt" viewBox={"0 0 " + width + " " + height} fontFamily="Arial">
         <g id="timeline" transform="translate(20, 20)">
           <path d="M17,0 h962 a17,17 0 0 1 17,17 v1 a17,17 0 0 1 -17,17 h-962 a17,17 0 0 1 -17,-17 v-1 a17,17 0 0 1 17,-17 z" fill={style.weekBarColor} transform="translate(198)"></path>
           {[...Array(weeks).keys()].map(week =>
