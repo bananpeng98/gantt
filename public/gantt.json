@@ -23,6 +23,7 @@
     {"name":"Write Report","type":"task","category":"goals","start":"2020-02-12","end":"2020-04-29"},
     {"name":"Gather datasets","type":"task","category":"goals","start":"2020-02-12","end":"2020-02-28"},
     {"name":"Oral halftime presentation","type":"task","category":"deadlines","start":"2020-02-18","end":"2020-03-03"},
+    {"name":"Build model","type":"task","category":"goals","start":"2020-02-28","end":"2020-04-10"},
     {"name":"Individual evaluation 1","type":"task","category":"deadlines","start":"2020-03-03","end":"2020-03-06"},
     {"name":"Model training","type":"task","category":"goals","start":"2020-03-14","end":"2020-04-14"},
 
