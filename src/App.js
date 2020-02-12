@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Gantt from './Gantt';
 import Info from './Info';
+import TaskInfo from './TaskInfo';
 import './App.css';
 
 function App({ tasks, style }) {
@@ -29,7 +30,8 @@ function App({ tasks, style }) {
       <div className="Gantt">
         <Gantt
           tasks={tasks}
-          style={style} />
+          style={style}
+        />
         <button onClick={() => download()}>Download Gantt</button>
       </div>
       <div className="Info">

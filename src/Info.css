@@ -2,10 +2,11 @@
 
 .TaskContainer {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .TaskContainer > div {
-    width: 50%;
+    width: 49%%;
     margin: 10px;
 }
 
